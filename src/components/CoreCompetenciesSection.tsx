@@ -59,18 +59,16 @@ export const CoreCompetenciesSection: React.FC = () => {
               </p>
             </div>
 
-            {/* Right Column: 2-Column Grid of 17 Items (Exact Page 6 Layout) */}
+            {/* Right Column: 2-Column Grid of 17 Items */}
             <div className="lg:col-span-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {CORE_COMPETENCIES_LIST.map((item) => (
                   <a
-                    key={item.number}
+                    key={item.title}
                     href={`#page-${parseInt(item.number) < 10 ? (parseInt(item.number) >= 3 ? parseInt(item.number) + 7 : (parseInt(item.number) === 1 ? 7 : 8)) : 18}`}
-                    className="bg-[#F2F5F9] hover:bg-[#E2EAF4] transition-colors p-4 rounded-xl flex items-center space-x-4 group"
+                    className="bg-[#F2F5F9] hover:bg-[#E2EAF4] transition-colors p-4 rounded-xl flex items-center space-x-3 group"
                   >
-                    <span className="text-lg font-bold text-[#1D70B8] w-7 shrink-0 font-mono">
-                      {item.number}
-                    </span>
+                    <div className="w-2.5 h-2.5 bg-[#1D70B8] rounded-sm shrink-0"></div>
                     <span className="text-sm font-semibold text-[#0A1B33] group-hover:text-[#1D70B8] transition-colors leading-snug">
                       {item.title}
                     </span>
@@ -84,7 +82,7 @@ export const CoreCompetenciesSection: React.FC = () => {
         </div>
       </section>
 
-      {/* ================= PAGES 7, 8, 10, 11, 12, 13, 15, 16, 17: Individual Competencies 01 to 09 ================= */}
+      {/* ================= Individual Competencies ================= */}
       {individualCompetencies.map((comp) => {
         // Map competency number to actual PDF page number
         const pageNumberMap: Record<string, number> = {
@@ -102,7 +100,7 @@ export const CoreCompetenciesSection: React.FC = () => {
 
         return (
           <section 
-            key={comp.number} 
+            key={comp.title} 
             id={`page-${pageNum}`} 
             className="py-16 border-b border-slate-200"
           >
@@ -118,19 +116,12 @@ export const CoreCompetenciesSection: React.FC = () => {
                 <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
                   OUR CORE COMPETENCIES
                 </span>
-                <span className="text-xs text-slate-400 font-mono ml-2">
-                  (PDF Page {pageNum})
-                </span>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
-                {/* Left Column: Number, Title, Description */}
+                {/* Left Column: Title & Description */}
                 <div className="lg:col-span-5 space-y-4">
-                  <div className="text-5xl font-black text-[#1D70B8] font-mono leading-none">
-                    {comp.number}
-                  </div>
-
                   <h3 className="text-3xl sm:text-4xl font-black text-[#0A1B33] tracking-tight leading-tight">
                     {comp.title}
                   </h3>
@@ -148,7 +139,7 @@ export const CoreCompetenciesSection: React.FC = () => {
                         href="#page-14"
                         className="inline-flex items-center text-xs font-bold text-white bg-[#1D70B8] hover:bg-blue-600 px-4 py-2 rounded-lg transition-colors"
                       >
-                        <span>View 45 Government Relations Checklist (Page 14) →</span>
+                        <span>View 45 Government Relations Checklist →</span>
                       </a>
                     </div>
                   )}
@@ -160,7 +151,7 @@ export const CoreCompetenciesSection: React.FC = () => {
                         href="#page-9"
                         className="inline-flex items-center text-xs font-bold text-white bg-[#0A1B33] hover:bg-slate-800 px-4 py-2 rounded-lg transition-colors"
                       >
-                        <span>View BIC Business Center (Page 09) →</span>
+                        <span>View BIC Business Center →</span>
                       </a>
                     </div>
                   )}
@@ -201,28 +192,22 @@ export const CoreCompetenciesSection: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex items-baseline justify-between mb-12">
+          <div className="mb-12">
             <h2 className="text-4xl sm:text-5xl font-black text-[#0A1B33] tracking-tight">
               Specialised Support Services
             </h2>
-            <span className="text-xs font-bold text-slate-400 font-mono">
-              PDF Page 18 (10–17)
-            </span>
           </div>
 
-          {/* 8 Cards in 4-Column x 2-Row Grid (Exact Layout from PDF Page 18) */}
+          {/* 8 Cards in 4-Column x 2-Row Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SPECIALISED_SERVICES.map((srv) => (
               <div 
-                key={srv.number}
+                key={srv.title}
                 className="flex flex-col justify-between space-y-4"
               >
-                {/* Header: Number & Title with Blue Accent Bar */}
+                {/* Header: Title with Blue Accent Bar */}
                 <div>
                   <div className="pb-3 border-b-2 border-[#1D70B8] mb-3">
-                    <span className="text-2xl font-black text-[#5B8CA8] font-mono mr-2">
-                      {srv.number}
-                    </span>
                     <span className="text-base font-bold text-[#0A1B33]">
                       {srv.title}
                     </span>

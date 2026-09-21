@@ -16,9 +16,6 @@ export const OperatingOfficesSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
             OPERATING OFFICES · ACROSS MULTIPLE COUNTRIES
           </span>
-          <span className="text-xs text-slate-400 font-mono ml-2">
-            (PDF Page 20)
-          </span>
         </div>
 
         {/* Title */}

@@ -19,9 +19,6 @@ export const GovernmentRelationsSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
             OUR CORE COMPETENCIES
           </span>
-          <span className="text-xs text-slate-400 font-mono ml-2">
-            (PDF Page 14)
-          </span>
         </div>
 
         {/* Heading & Search */}
@@ -73,10 +70,10 @@ export const GovernmentRelationsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Summary Counter */}
-        <div className="mt-8 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-mono">
-          <span>All 45 Official Government Services from PDF Page 14</span>
-          <span>45 of 45 Services Documented</span>
+        {/* Summary Footer */}
+        <div className="mt-8 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-medium">
+          <span>Comprehensive Government Relations & Licensing Checklist</span>
+          <span>Complete Ministry & Regulatory Coverage</span>
         </div>
 
       </div>

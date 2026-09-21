@@ -19,9 +19,6 @@ export const BusinessCenterSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
             OUR CORE COMPETENCIES · BUSINESS/SERVICE OFFICE
           </span>
-          <span className="text-xs text-slate-400 font-mono ml-2">
-            (PDF Page 9)
-          </span>
         </div>
 
         {/* Heading & Location */}

@@ -81,9 +81,8 @@ export const Hero: React.FC = () => {
                 className="w-full h-auto object-cover max-h-[620px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1B33]/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-xs bg-[#0A1B33]/90 backdrop-blur-sm p-3 rounded-xl border border-slate-700 text-slate-200 flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 text-xs bg-[#0A1B33]/90 backdrop-blur-sm p-3 rounded-xl border border-slate-700 text-slate-200">
                 <span>Riyadh HQ · Al Anoud Tower 2, 12th Floor</span>
-                <span className="text-blue-400 font-bold uppercase text-[10px]">Page 01</span>
               </div>
             </div>
           </div>

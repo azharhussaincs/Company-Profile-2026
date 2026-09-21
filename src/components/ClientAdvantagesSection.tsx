@@ -16,31 +16,23 @@ export const ClientAdvantagesSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
             ADVANTAGES FOR CLIENTS
           </span>
-          <span className="text-xs text-slate-400 font-mono ml-2">
-            (PDF Page 19)
-          </span>
         </div>
 
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight max-w-5xl mb-20">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight max-w-5xl mb-16">
           How Clients Can Benefit from the Services Offered by Bright Integrated Support Services Company
         </h2>
 
-        {/* 4 Columns (Exact Layout and Colors from PDF Page 19) */}
+        {/* 4 Columns without raw count numbers */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {CLIENT_ADVANTAGES.map((adv) => (
-            <div key={adv.number} className="space-y-4">
+            <div key={adv.title} className="space-y-4">
               
-              {/* Large Number */}
-              <div className="text-5xl sm:text-6xl font-black text-[#5B8CA8] font-mono leading-none">
-                {adv.number}
-              </div>
+              {/* Accent Line */}
+              <div className="w-12 h-[3px] bg-[#5B8CA8]"></div>
 
-              {/* Horizontal Line under Number */}
-              <div className="w-full h-[2px] bg-[#386690]"></div>
-
-              {/* Exact Title from PDF */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug pt-2">
+              {/* Title from PDF */}
+              <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug pt-1">
                 {adv.title}
               </h3>
 

@@ -1,12 +1,8 @@
 import React from 'react';
-import { Mail, Phone, MapPin, ChevronUp, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, ChevronUp } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/profileData';
 
-interface FooterProps {
-  onOpenAudit: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -38,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
                   </span>
                 </span>
                 <span className="text-xs text-slate-400 block font-medium">
-                  Company Profile 2026
+                  Corporate Profile
                 </span>
               </div>
             </div>
@@ -54,55 +50,41 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
             <p className="text-xs text-slate-400 leading-relaxed">
               Complete integrated business support services for multinational companies, potential foreign companies and local companies in the Kingdom of Saudi Arabia.
             </p>
-
-            <div className="pt-2">
-              <button
-                onClick={onOpenAudit}
-                className="inline-flex items-center px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 hover:bg-emerald-900 text-xs font-semibold transition-colors"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5 mr-1.5 text-emerald-400" />
-                22-Page Document Verification Audit (100%)
-              </button>
-            </div>
           </div>
 
-          {/* PDF Pages 1–8 */}
+          {/* Company & Core Competencies Links */}
           <div className="lg:col-span-3 space-y-2 text-xs">
             <div className="font-bold uppercase tracking-wider text-white mb-3">
-              Pages 1–10
+              Company
             </div>
-            <ul className="space-y-1.5 text-slate-400">
-              <li><a href="#page-1" className="hover:text-white transition-colors">Page 01: Cover & Identity</a></li>
-              <li><a href="#page-2" className="hover:text-white transition-colors">Page 02: About Our Company</a></li>
-              <li><a href="#page-3" className="hover:text-white transition-colors">Page 03: Our Vision & Mission</a></li>
-              <li><a href="#page-4" className="hover:text-white transition-colors">Page 04: Management Team & Org Chart</a></li>
-              <li><a href="#page-5" className="hover:text-white transition-colors">Page 05: Milestones Timeline</a></li>
-              <li><a href="#page-6" className="hover:text-white transition-colors">Page 06: Core Competencies Overview</a></li>
-              <li><a href="#page-7" className="hover:text-white transition-colors">Page 07: 01 Accounting & Payroll</a></li>
-              <li><a href="#page-8" className="hover:text-white transition-colors">Page 08: 02 Serviced Offices</a></li>
-              <li><a href="#page-9" className="hover:text-white transition-colors">Page 09: BIC Business Center</a></li>
-              <li><a href="#page-10" className="hover:text-white transition-colors">Page 10: 03 Chauffeur Services</a></li>
+            <ul className="space-y-2 text-slate-400">
+              <li><a href="#page-2" className="hover:text-white transition-colors">About BIC</a></li>
+              <li><a href="#page-3" className="hover:text-white transition-colors">Our Vision & Mission</a></li>
+              <li><a href="#page-4" className="hover:text-white transition-colors">Management Team & Leadership</a></li>
+              <li><a href="#page-5" className="hover:text-white transition-colors">Company Milestones & History</a></li>
+              <li><a href="#page-19" className="hover:text-white transition-colors">Client Advantages</a></li>
+              <li><a href="#page-20" className="hover:text-white transition-colors">Global Operating Offices</a></li>
+              <li><a href="#page-21" className="hover:text-white transition-colors">International Reach</a></li>
             </ul>
           </div>
 
-          {/* PDF Pages 11–22 */}
+          {/* Core Services Links */}
           <div className="lg:col-span-2 space-y-2 text-xs">
             <div className="font-bold uppercase tracking-wider text-white mb-3">
-              Pages 11–22
+              Solutions & Services
             </div>
-            <ul className="space-y-1.5 text-slate-400">
-              <li><a href="#page-11" className="hover:text-white transition-colors">Page 11: 04 Employee Management</a></li>
-              <li><a href="#page-12" className="hover:text-white transition-colors">Page 12: 05 GM Services</a></li>
-              <li><a href="#page-13" className="hover:text-white transition-colors">Page 13: 06 Government-Related</a></li>
-              <li><a href="#page-14" className="hover:text-white transition-colors">Page 14: 45 Gov Relations</a></li>
-              <li><a href="#page-15" className="hover:text-white transition-colors">Page 15: 07 HR & Recruitment</a></li>
-              <li><a href="#page-16" className="hover:text-white transition-colors">Page 16: 08 Immigration Services</a></li>
-              <li><a href="#page-17" className="hover:text-white transition-colors">Page 17: 09 Insurance Assistance</a></li>
-              <li><a href="#page-18" className="hover:text-white transition-colors">Page 18: 10–17 Specialised Support</a></li>
-              <li><a href="#page-19" className="hover:text-white transition-colors">Page 19: Client Advantages</a></li>
-              <li><a href="#page-20" className="hover:text-white transition-colors">Page 20: Operating Offices (6)</a></li>
-              <li><a href="#page-21" className="hover:text-white transition-colors">Page 21: International Clients</a></li>
-              <li><a href="#page-22" className="hover:text-white transition-colors">Page 22: Get In Touch!</a></li>
+            <ul className="space-y-2 text-slate-400">
+              <li><a href="#page-7" className="hover:text-white transition-colors">Accounting & Payroll</a></li>
+              <li><a href="#page-8" className="hover:text-white transition-colors">Serviced Offices</a></li>
+              <li><a href="#page-9" className="hover:text-white transition-colors">BIC Business Center</a></li>
+              <li><a href="#page-10" className="hover:text-white transition-colors">Chauffeur Services</a></li>
+              <li><a href="#page-11" className="hover:text-white transition-colors">Employee Management</a></li>
+              <li><a href="#page-12" className="hover:text-white transition-colors">General Manager Services</a></li>
+              <li><a href="#page-14" className="hover:text-white transition-colors">Government Relations</a></li>
+              <li><a href="#page-15" className="hover:text-white transition-colors">HR & Recruitment</a></li>
+              <li><a href="#page-16" className="hover:text-white transition-colors">Immigration Services</a></li>
+              <li><a href="#page-17" className="hover:text-white transition-colors">Insurance Assistance</a></li>
+              <li><a href="#page-18" className="hover:text-white transition-colors">Specialised Services</a></li>
             </ul>
           </div>
 
@@ -155,14 +137,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button
-              onClick={onOpenAudit}
-              className="text-emerald-400 hover:underline"
-            >
-              22-Page Document Audit
-            </button>
+            <span>Complete Integrated Support Solutions</span>
             <span>·</span>
-            <span>Single Source of Truth: BIC Profile 2026 PDF</span>
+            <a href="#page-22" className="text-slate-400 hover:text-white transition-colors">
+              Contact Us
+            </a>
             <span>·</span>
             <button
               onClick={scrollToTop}

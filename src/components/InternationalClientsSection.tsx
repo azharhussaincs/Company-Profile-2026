@@ -16,9 +16,6 @@ export const InternationalClientsSection: React.FC = () => {
           <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
             INTERNATIONAL CLIENTS
           </span>
-          <span className="text-xs text-slate-400 font-mono ml-2">
-            (PDF Page 21)
-          </span>
         </div>
 
         {/* Title */}

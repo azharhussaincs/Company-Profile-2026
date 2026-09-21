@@ -1,294 +1,259 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  Calculator, Building2, Car, Users, Briefcase, Landmark, UserCheck, 
-  Plane, Shield, FileText, Wrench, Wifi, TrendingUp, Home, Navigation, 
-  Languages, KeyRound, Search, CheckCircle2, ChevronDown, ChevronUp, ExternalLink 
-} from 'lucide-react';
-import { CORE_COMPETENCIES } from '../data/profileData';
-
-const iconMap: Record<string, React.ReactNode> = {
-  '01': <Calculator className="w-6 h-6 text-blue-400" />,
-  '02': <Building2 className="w-6 h-6 text-indigo-400" />,
-  '03': <Car className="w-6 h-6 text-amber-400" />,
-  '04': <Users className="w-6 h-6 text-emerald-400" />,
-  '05': <Briefcase className="w-6 h-6 text-purple-400" />,
-  '06': <Landmark className="w-6 h-6 text-rose-400" />,
-  '07': <UserCheck className="w-6 h-6 text-cyan-400" />,
-  '08': <Plane className="w-6 h-6 text-sky-400" />,
-  '09': <Shield className="w-6 h-6 text-green-400" />,
-  '10': <FileText className="w-6 h-6 text-blue-300" />,
-  '11': <Wrench className="w-6 h-6 text-orange-400" />,
-  '12': <Wifi className="w-6 h-6 text-teal-400" />,
-  '13': <TrendingUp className="w-6 h-6 text-yellow-400" />,
-  '14': <Home className="w-6 h-6 text-pink-400" />,
-  '15': <Navigation className="w-6 h-6 text-violet-400" />,
-  '16': <Languages className="w-6 h-6 text-emerald-300" />,
-  '17': <KeyRound className="w-6 h-6 text-fuchsia-400" />,
-};
+  CORE_COMPETENCIES_LIST, 
+  COMPETENCY_01, 
+  COMPETENCY_02, 
+  COMPETENCY_03, 
+  COMPETENCY_04, 
+  COMPETENCY_05, 
+  COMPETENCY_06, 
+  COMPETENCY_07, 
+  COMPETENCY_08, 
+  COMPETENCY_09, 
+  SPECIALISED_SERVICES 
+} from '../data/profileData';
 
 export const CoreCompetenciesSection: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'core' | 'specialised'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({
-    '01': true,
-    '02': true,
-    '05': true,
-    '06': true,
-  });
-
-  const toggleExpand = (id: string) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
-
-  const expandAll = () => {
-    const all: Record<string, boolean> = {};
-    CORE_COMPETENCIES.forEach(c => all[c.id] = true);
-    setExpandedCards(all);
-  };
-
-  const collapseAll = () => {
-    setExpandedCards({});
-  };
-
-  const filteredCompetencies = CORE_COMPETENCIES.filter(item => {
-    const matchesFilter = activeFilter === 'all' || item.category === activeFilter;
-    const query = searchQuery.toLowerCase().trim();
-    if (!query) return matchesFilter;
-
-    const matchesTitle = item.title.toLowerCase().includes(query);
-    const matchesNumber = item.number.includes(query);
-    const matchesDesc = item.description?.toLowerCase().includes(query);
-    const matchesServices = item.services.some(s => s.toLowerCase().includes(query));
-
-    return matchesFilter && (matchesTitle || matchesNumber || matchesDesc || matchesServices);
-  });
+  const individualCompetencies = [
+    COMPETENCY_01,
+    COMPETENCY_02,
+    COMPETENCY_03,
+    COMPETENCY_04,
+    COMPETENCY_05,
+    COMPETENCY_06,
+    COMPETENCY_07,
+    COMPETENCY_08,
+    COMPETENCY_09
+  ];
 
   return (
-    <section id="competencies" className="py-24 bg-[#0B1A2E] text-slate-100 relative border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header (Page 6) */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
-          <div>
-            <div className="flex items-center space-x-2 mb-3">
-              <div className="bic-dots">
-                <span className="dot-yellow"></span>
-                <span className="dot-green"></span>
-                <span className="dot-red"></span>
-              </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
-                OUR CORE COMPETENCIES
-              </span>
+    <div className="bg-white text-[#0A1B33]">
+      
+      {/* ================= PAGE 6: Core Competencies Overview ================= */}
+      <section id="page-6" className="py-20 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Eyebrow */}
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="bic-dots">
+              <span className="dot-yellow"></span>
+              <span className="dot-green"></span>
+              <span className="dot-red"></span>
             </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-              Our core competencies
-            </h2>
-            <div className="mt-3 h-1 w-24 bg-blue-500 rounded"></div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
+              OUR CORE COMPETENCIES
+            </span>
           </div>
 
-          <div className="max-w-xl">
-            <p className="text-lg text-blue-200 font-light leading-relaxed">
-              We provide complete integrated support solutions for clients' businesses by providing them with a wide range of consulting services.
-            </p>
-          </div>
-        </div>
-
-        {/* Filter and Search Controls */}
-        <div className="bg-[#07111E] rounded-2xl p-4 sm:p-6 border border-slate-800 mb-12 shadow-xl">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-12">
             
-            {/* Category tabs */}
-            <div className="flex flex-wrap gap-2 w-full md:w-auto">
-              <button
-                onClick={() => setActiveFilter('all')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  activeFilter === 'all'
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                    : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700'
-                }`}
-              >
-                All 17 Competencies
-              </button>
-              <button
-                onClick={() => setActiveFilter('core')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  activeFilter === 'core'
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                    : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700'
-                }`}
-              >
-                Core Competencies (01–09)
-              </button>
-              <button
-                onClick={() => setActiveFilter('specialised')}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                  activeFilter === 'specialised'
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                    : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700'
-                }`}
-              >
-                Specialised Support (10–17)
-              </button>
+            {/* Left Column: Heading & Description */}
+            <div className="lg:col-span-4 space-y-4">
+              <h2 className="text-4xl sm:text-5xl font-black text-[#0A1B33] tracking-tight leading-tight">
+                Our core <br />
+                competencies
+              </h2>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                We provide complete integrated support solutions for clients' businesses by providing them with a wide range of consulting services.
+              </p>
             </div>
 
-            {/* Search Input */}
-            <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Search services, ministries..."
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors"
-              />
-              {searchQuery && (
-                <button 
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-
-            {/* Expand / Collapse All */}
-            <div className="flex items-center space-x-2 text-xs text-slate-400">
-              <button 
-                onClick={expandAll}
-                className="hover:text-white underline underline-offset-4"
-              >
-                Expand All
-              </button>
-              <span>·</span>
-              <button 
-                onClick={collapseAll}
-                className="hover:text-white underline underline-offset-4"
-              >
-                Collapse All
-              </button>
+            {/* Right Column: 2-Column Grid of 17 Items (Exact Page 6 Layout) */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {CORE_COMPETENCIES_LIST.map((item) => (
+                  <a
+                    key={item.number}
+                    href={`#page-${parseInt(item.number) < 10 ? (parseInt(item.number) >= 3 ? parseInt(item.number) + 7 : (parseInt(item.number) === 1 ? 7 : 8)) : 18}`}
+                    className="bg-[#F2F5F9] hover:bg-[#E2EAF4] transition-colors p-4 rounded-xl flex items-center space-x-4 group"
+                  >
+                    <span className="text-lg font-bold text-[#1D70B8] w-7 shrink-0 font-mono">
+                      {item.number}
+                    </span>
+                    <span className="text-sm font-semibold text-[#0A1B33] group-hover:text-[#1D70B8] transition-colors leading-snug">
+                      {item.title}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
 
           </div>
+
         </div>
+      </section>
 
-        {/* Competencies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCompetencies.map((comp) => {
-            const isExpanded = !!expandedCards[comp.id];
-            const hasManyServices = comp.services.length > 4;
+      {/* ================= PAGES 7, 8, 10, 11, 12, 13, 15, 16, 17: Individual Competencies 01 to 09 ================= */}
+      {individualCompetencies.map((comp) => {
+        // Map competency number to actual PDF page number
+        const pageNumberMap: Record<string, number> = {
+          '01': 7,
+          '02': 8,
+          '03': 10,
+          '04': 11,
+          '05': 12,
+          '06': 13,
+          '07': 15,
+          '08': 16,
+          '09': 17,
+        };
+        const pageNum = pageNumberMap[comp.number];
 
-            return (
-              <div
-                key={comp.id}
-                id={`competency-${comp.id}`}
-                className="bg-gradient-to-b from-[#0e223a] to-[#091626] border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-600/60 transition-all duration-200 shadow-xl group"
-              >
-                <div>
-                  {/* Card Top: Number & Icon */}
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="text-3xl font-black text-blue-400 tracking-tight font-mono">
-                      {comp.number}
-                    </span>
-                    <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-700/60 group-hover:scale-110 transition-transform">
-                      {iconMap[comp.id] || <FileText className="w-6 h-6 text-blue-400" />}
-                    </div>
+        return (
+          <section 
+            key={comp.number} 
+            id={`page-${pageNum}`} 
+            className="py-16 border-b border-slate-200"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Eyebrow */}
+              <div className="flex items-center space-x-2 mb-6">
+                <div className="bic-dots">
+                  <span className="dot-yellow"></span>
+                  <span className="dot-green"></span>
+                  <span className="dot-red"></span>
+                </div>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
+                  OUR CORE COMPETENCIES
+                </span>
+                <span className="text-xs text-slate-400 font-mono ml-2">
+                  (PDF Page {pageNum})
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                {/* Left Column: Number, Title, Description */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="text-5xl font-black text-[#1D70B8] font-mono leading-none">
+                    {comp.number}
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-3xl sm:text-4xl font-black text-[#0A1B33] tracking-tight leading-tight">
                     {comp.title}
                   </h3>
 
-                  {/* Description if present */}
-                  {comp.description && (
-                    <p className="text-xs text-slate-300 italic mb-4 leading-relaxed bg-slate-900/40 p-3 rounded-lg border border-slate-800">
-                      {comp.description}
+                  {'description' in comp && typeof (comp as { description?: string }).description === 'string' && (
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
+                      {(comp as { description?: string }).description}
                     </p>
                   )}
 
-                  {/* Note if present */}
-                  {comp.note && (
-                    <div className="text-[11px] text-blue-300 bg-blue-950/60 border border-blue-800/60 p-2.5 rounded-lg mb-4 flex items-center justify-between">
-                      <span>{comp.note}</span>
-                      <a href="#business-center" className="text-blue-400 hover:text-white shrink-0 ml-2">
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  )}
-
-                  {/* Special Link for Competency 06 to the Detailed Government Relations list */}
-                  {comp.id === '06' && (
-                    <div className="mb-4">
+                  {/* Quick link for 06 Government-Related Services to Page 14 list */}
+                  {comp.number === '06' && (
+                    <div className="pt-3">
                       <a
-                        href="#gov-relations"
-                        className="inline-flex items-center text-xs font-semibold px-3 py-1.5 rounded-lg bg-rose-950/70 border border-rose-800/70 text-rose-300 hover:bg-rose-900 transition-colors"
+                        href="#page-14"
+                        className="inline-flex items-center text-xs font-bold text-white bg-[#1D70B8] hover:bg-blue-600 px-4 py-2 rounded-lg transition-colors"
                       >
-                        <Landmark className="w-3.5 h-3.5 mr-1.5" />
-                        View Complete 45 Government Relations List →
+                        <span>View 45 Government Relations Checklist (Page 14) →</span>
                       </a>
                     </div>
                   )}
 
-                  {/* Services List */}
-                  <div className="space-y-2 mt-3">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between pb-1 border-b border-slate-800">
-                      <span>Documented Services ({comp.services.length})</span>
+                  {/* Quick link for 02 Serviced Offices to Page 9 Business Center */}
+                  {comp.number === '02' && (
+                    <div className="pt-3">
+                      <a
+                        href="#page-9"
+                        className="inline-flex items-center text-xs font-bold text-white bg-[#0A1B33] hover:bg-slate-800 px-4 py-2 rounded-lg transition-colors"
+                      >
+                        <span>View BIC Business Center (Page 09) →</span>
+                      </a>
                     </div>
-
-                    <ul className="space-y-1.5 pt-1">
-                      {(isExpanded ? comp.services : comp.services.slice(0, 4)).map((srv, sIdx) => (
-                        <li key={sIdx} className="text-xs text-slate-200 flex items-start leading-snug">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 mr-2 shrink-0 mt-0.5" />
-                          <span>{srv}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  )}
                 </div>
 
-                {/* Card Bottom: Toggle if more than 4 services */}
-                {hasManyServices && (
-                  <div className="pt-4 mt-4 border-t border-slate-800/80">
-                    <button
-                      onClick={() => toggleExpand(comp.id)}
-                      className="w-full py-1.5 px-3 rounded-lg bg-slate-900/60 hover:bg-slate-800 text-xs text-blue-300 font-medium flex items-center justify-center space-x-1 transition-colors border border-slate-800"
+                {/* Right Column: Service Bars (Exact Ice-Blue Bars from PDF) */}
+                <div className="lg:col-span-7 space-y-2.5">
+                  {comp.services.map((service, sIdx) => (
+                    <div
+                      key={sIdx}
+                      className="bg-[#F2F5F9] px-6 py-4 rounded-xl text-sm sm:text-base font-semibold text-[#0A1B33] shadow-sm flex items-center"
                     >
-                      {isExpanded ? (
-                        <>
-                          <span>Show Less</span>
-                          <ChevronUp className="w-3.5 h-3.5" />
-                        </>
-                      ) : (
-                        <>
-                          <span>Show All {comp.services.length} Services (+{comp.services.length - 4})</span>
-                          <ChevronDown className="w-3.5 h-3.5" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                )}
+                      {service}
+                    </div>
+                  ))}
+                </div>
+
               </div>
-            );
-          })}
-        </div>
 
-        {filteredCompetencies.length === 0 && (
-          <div className="text-center py-12 bg-slate-900/40 rounded-2xl border border-slate-800">
-            <p className="text-slate-400 text-sm">No services matched "{searchQuery}".</p>
-            <button
-              onClick={() => { setSearchQuery(''); setActiveFilter('all'); }}
-              className="mt-3 text-xs text-blue-400 hover:underline"
-            >
-              Reset filters
-            </button>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* ================= PAGE 18: Specialised Support Services (10 to 17) ================= */}
+      <section id="page-18" className="py-20 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Eyebrow */}
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="bic-dots">
+              <span className="dot-yellow"></span>
+              <span className="dot-green"></span>
+              <span className="dot-red"></span>
+            </div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0A1B33]">
+              OUR CORE COMPETENCIES
+            </span>
           </div>
-        )}
 
-      </div>
-    </section>
+          <div className="flex items-baseline justify-between mb-12">
+            <h2 className="text-4xl sm:text-5xl font-black text-[#0A1B33] tracking-tight">
+              Specialised Support Services
+            </h2>
+            <span className="text-xs font-bold text-slate-400 font-mono">
+              PDF Page 18 (10–17)
+            </span>
+          </div>
+
+          {/* 8 Cards in 4-Column x 2-Row Grid (Exact Layout from PDF Page 18) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {SPECIALISED_SERVICES.map((srv) => (
+              <div 
+                key={srv.number}
+                className="flex flex-col justify-between space-y-4"
+              >
+                {/* Header: Number & Title with Blue Accent Bar */}
+                <div>
+                  <div className="pb-3 border-b-2 border-[#1D70B8] mb-3">
+                    <span className="text-2xl font-black text-[#5B8CA8] font-mono mr-2">
+                      {srv.number}
+                    </span>
+                    <span className="text-base font-bold text-[#0A1B33]">
+                      {srv.title}
+                    </span>
+                  </div>
+
+                  {/* Content: Either Paragraph or List Items */}
+                  {srv.type === 'paragraph' ? (
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {srv.content}
+                    </p>
+                  ) : (
+                    <div className="space-y-2">
+                      {srv.items?.map((item, iIdx) => (
+                        <div 
+                          key={iIdx}
+                          className="bg-[#F2F5F9] p-3 rounded-lg text-xs font-semibold text-[#0A1B33] flex items-start space-x-2"
+                        >
+                          <div className="w-1.5 h-1.5 bg-[#1D70B8] mt-1.5 shrink-0"></div>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   );
 };

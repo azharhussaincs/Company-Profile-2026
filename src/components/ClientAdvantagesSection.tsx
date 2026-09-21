@@ -1,68 +1,49 @@
 import React from 'react';
-import { Zap, ShieldCheck, TrendingUp, Users } from 'lucide-react';
 import { CLIENT_ADVANTAGES } from '../data/profileData';
-
-const iconList = [
-  <Zap className="w-8 h-8 text-blue-400" />,
-  <ShieldCheck className="w-8 h-8 text-emerald-400" />,
-  <TrendingUp className="w-8 h-8 text-yellow-400" />,
-  <Users className="w-8 h-8 text-indigo-400" />
-];
 
 export const ClientAdvantagesSection: React.FC = () => {
   return (
-    <section id="advantages" className="py-24 bg-gradient-to-b from-[#0B1A2E] via-[#07111E] to-[#0B1A2E] text-slate-100 relative border-b border-slate-800">
+    <section id="page-19" className="py-24 bg-[#0A1B33] text-white border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header (Page 19) */}
-        <div className="max-w-4xl mb-16">
-          <div className="flex items-center space-x-2 mb-3">
-            <div className="bic-dots">
-              <span className="dot-yellow"></span>
-              <span className="dot-green"></span>
-              <span className="dot-red"></span>
-            </div>
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
-              ADVANTAGES FOR CLIENTS
-            </span>
+        {/* Eyebrow */}
+        <div className="flex items-center space-x-2 mb-4">
+          <div className="bic-dots">
+            <span className="dot-yellow"></span>
+            <span className="dot-green"></span>
+            <span className="dot-red"></span>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-            How Clients Can Benefit from the Services Offered by Bright Integrated Support Services Company
-          </h2>
-          <div className="mt-4 h-1 w-28 bg-blue-500 rounded"></div>
+          <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
+            ADVANTAGES FOR CLIENTS
+          </span>
+          <span className="text-xs text-slate-400 font-mono ml-2">
+            (PDF Page 19)
+          </span>
         </div>
 
-        {/* 4 Advantage Cards (Page 19 layout) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CLIENT_ADVANTAGES.map((adv, idx) => (
-            <div
-              key={adv.number}
-              className="bg-gradient-to-b from-[#0E223A] to-[#091728] border border-slate-800 rounded-3xl p-8 flex flex-col justify-between hover:border-blue-500/70 hover:translate-y-[-2px] transition-all duration-300 shadow-xl group"
-            >
-              <div>
-                {/* Number & Icon */}
-                <div className="flex items-center justify-between mb-8">
-                  <span className="text-4xl lg:text-5xl font-black text-blue-400/90 font-mono tracking-tight group-hover:text-blue-300 transition-colors">
-                    {adv.number}
-                  </span>
-                  <div className="p-3.5 bg-slate-900/90 rounded-2xl border border-slate-700/60 group-hover:scale-110 transition-transform">
-                    {iconList[idx]}
-                  </div>
-                </div>
+        {/* Title */}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight max-w-5xl mb-20">
+          How Clients Can Benefit from the Services Offered by Bright Integrated Support Services Company
+        </h2>
 
-                <div className="w-12 h-0.5 bg-blue-500/60 mb-6"></div>
-
-                {/* Title (Exact from PDF) */}
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 leading-snug">
-                  {adv.title}
-                </h3>
+        {/* 4 Columns (Exact Layout and Colors from PDF Page 19) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {CLIENT_ADVANTAGES.map((adv) => (
+            <div key={adv.number} className="space-y-4">
+              
+              {/* Large Number */}
+              <div className="text-5xl sm:text-6xl font-black text-[#5B8CA8] font-mono leading-none">
+                {adv.number}
               </div>
 
-              {/* Description */}
-              <p className="text-xs text-slate-300 leading-relaxed mt-4 pt-4 border-t border-slate-800/80">
-                {adv.description}
-              </p>
+              {/* Horizontal Line under Number */}
+              <div className="w-full h-[2px] bg-[#386690]"></div>
+
+              {/* Exact Title from PDF */}
+              <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug pt-2">
+                {adv.title}
+              </h3>
+
             </div>
           ))}
         </div>

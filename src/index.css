@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #0b1a2e;
+    color: #f8fafc;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07111e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d70b8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Dots decoration matching BIC visual identity */
+.bic-dots {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.bic-dots span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.bic-dots .dot-yellow {
+  background-color: #f5a623;
+}
+.bic-dots .dot-green {
+  background-color: #27ae60;
+}
+.bic-dots .dot-red {
+  background-color: #eb5757;
+}
+
+.bic-dots-lg {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.bic-dots-lg span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.bic-dots-lg .dot-yellow {
+  background-color: #f5a623;
+}
+.bic-dots-lg .dot-green {
+  background-color: #27ae60;
+}
+.bic-dots-lg .dot-red {
+  background-color: #eb5757;
+}
